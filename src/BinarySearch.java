@@ -8,29 +8,33 @@ public class BinarySearch {
     public static void main(String[] args){
         int[] intArray;
         intArray = new int[100]; // инициализирует массив
-        for(int i = 0; i < intArray.length; i++){  //заполняет массив от 1 до 100
-            intArray[i] = i + 1;
-        }
+        int elems = intArray.length; // Кол-во элементов в массиве
         int required = 33; //искомое
         int lowerBound = 0; //нижняя половина
-        int upperBound = intArray.length - 1; //верхняя половина
+        int upperBound = elems - 1; //верхняя половина
         int half; //половина ряда
         int q = 1; //счетчик операций
 
-        for (int j=0; j<intArray.length; j++){
+//      заполняет массив от 1 до 100
+        for(int i = 0; i < elems; i++){
+            intArray[i] = i + 1;
+        }
+
+//        Линейный поиск
+        for (int j=0; j < elems; j++){
             if (intArray[j] == required){
                 System.out.println("Количество операций при линейном поиске: " + (j+1));
                 break;
             }
         }
-        if (intArray.length == required){
+        if (elems == required){
             System.out.println("Элемент не найден!");
         } else {
             System.out.println("Элемент найден: " + required);
         }
 
 
-
+//        Двоичный поиск
         while (true){
             half = (lowerBound + upperBound)/2;
             if(intArray[half]==required){
